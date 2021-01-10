@@ -1,3 +1,5 @@
+#THIS IS A MODIFIED VERSION OF GROSOLO/GROSORA
+
 # Grosolo
 
 A super fast forum software written in Go.
