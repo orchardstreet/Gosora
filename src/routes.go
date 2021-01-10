@@ -601,9 +601,9 @@ func route_login_submit(w http.ResponseWriter, r *http.Request) {
 	}
 	
 	log.Print("Successful Login")
-	cookie := http.Cookie{"uid",strconv.Itoa(uid),"/","",time.Now(),"",0,true,false,"",[]string{}}
+	cookie := http.Cookie{Name: "uid",Value: strconv.Itoa(uid),Path: "/",Expires: time.Now(),MaxAge: 0,Secure: true,HttpOnly: false}
 	http.SetCookie(w,&cookie)
-	cookie = http.Cookie{"session",session,"/","",time.Now(),"",0,true,false,"",[]string{}}
+	cookie = http.Cookie{Name: "session",Value: session,Path: "/",Expires: time.Now(),MaxAge: 0,Secure: true,HttpOnly: false}
 	http.SetCookie(w,&cookie)
 	http.Redirect(w,r, "/", http.StatusSeeOther)
 }
@@ -697,9 +697,9 @@ func route_register_submit(w http.ResponseWriter, r *http.Request) {
 		return
 	}
 	
-	cookie := http.Cookie{"uid",strconv.FormatInt(lastId, 10),"/","",time.Now(),"",0,true,false,"",[]string{}}
+	cookie := http.Cookie{Name: "uid",Value: strconv.FormatInt(lastId, 10),Path: "/",Expires: time.Now(),MaxAge:0,Secure:true,HttpOnly:false}
 	http.SetCookie(w,&cookie)
-	cookie = http.Cookie{"session",session,"/","",time.Now(),"",0,true,false,"",[]string{}}
+	cookie = http.Cookie{Name: "session",Value: session,Path: "/",Expires: time.Now(),MaxAge: 0,Secure: true,HttpOnly: false}
 	http.SetCookie(w,&cookie)
 	http.Redirect(w,r, "/", http.StatusSeeOther)
 }
